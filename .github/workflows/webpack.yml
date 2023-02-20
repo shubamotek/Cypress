@@ -17,3 +17,16 @@ jobs:
 
     - name: Run Cypress tests
       run: npm run cypress:run
+
+       - name: Email on succes
+        if: ${{ succes() }}
+        uses: dawidd6/action-send-mail@v2.1.0
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ shubprasain@amotek.be }}
+          password: ${{ 1967Rabbit.... }}
+          subject: 'Cypress Test Succes'
+          body: 'The Cypress test succeced. Check the workflow logs for more details.'
+          to: shubprasain@aol.com
+          from: shubprasain@amotek.be
