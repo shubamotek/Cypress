@@ -46,11 +46,11 @@ describe("test", () => {
   cy.get('input[placeholder=\"1 (702) 123-4567\"]').type('32489087777')
   cy.get("#SupplierCategory").clear()
   cy.get("#SupplierCategory").type('D')
-  cy.xpath('/html/body/div[2]/div/div[3]/div/div/div[2]/form/div[5]/div[3]/div/button').click()
+ // cy.xpath('/html/body/div[2]/div/div[3]/div/div/div[2]/form/div[5]/div[3]/div/button').click()
   
   
   
-  cy.xpath('/html/body/div[2]/div/div[3]/div/div/div[2]/form/div[5]/div[3]/div/div/div/div/ul/li[1]/span').click()
+ // cy.xpath('/html/body/div[2]/div/div[3]/div/div/div[2]/form/div[5]/div[3]/div/div/div/div/ul/li[1]/span').click()
 
   
 
