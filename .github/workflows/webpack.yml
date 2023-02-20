@@ -18,15 +18,15 @@ jobs:
     - name: Run Cypress tests
       run: npm run cypress:run
 
-       - name: Email on succes
-        if: ${{ succes() }}
-        uses: dawidd6/action-send-mail@v2.1.0
+     - name: Stuur een mail
+        if: always()
+        uses: dawidd6/action-send-mail@v2
         with:
           server_address: smtp.gmail.com
           server_port: 465
-          username: ${{ shubprasain@amotek.be }}
+          username: ${{ shubamotek }}
           password: ${{ 1967Rabbit.... }}
-          subject: 'Cypress Test Succes'
-          body: 'The Cypress test succeced. Check the workflow logs for more details.'
+          subject: ${{ github.job }} job of ${{ github.repository }} has ${{ job.status }}
+          body: ${{ github.job }} job in worflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
           to: shubprasain@aol.com
-          from: shubprasain@amotek.be
+          from: Shubham Prasain
