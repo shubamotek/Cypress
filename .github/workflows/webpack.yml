@@ -17,3 +17,16 @@ jobs:
 
     - name: Run Cypress tests
       run: npm run cypress:run
+
+     - name: Stuur een mail
+        if: always()
+        uses: dawidd6/action-send-mail@v2
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ shubamotek }}
+          password: ${{ 1967Rabbit.... }}
+          subject: ${{ github.job }} job of ${{ github.repository }} has ${{ job.status }}
+          body: ${{ github.job }} job in worflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
+          to: shubprasain@aol.com
+          from: Shubham Prasain
