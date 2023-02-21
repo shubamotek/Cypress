@@ -32,18 +32,18 @@ on : [push]
 jobs : 
  cypress-run:
   runs-on : ubuntu-latest
-  steps :
-    -name  : Checkout
+  steps : 
      uses : actions/checkout@v2
-     
+
       - name: Install dependencies
        run: npm install
 
   - name : Cypress run
     uses : cypress-io/github-action@v2
     with :
-      build: npm run build
-      start: npm start
+         - name: Run Cypress tests
+          run: npm run cypress:run
+   
     env:
     CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY}}
      GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN }}
