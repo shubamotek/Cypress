@@ -1,6 +1,6 @@
 describe("test", () => {
   it("test", () => {
-    cy.visit("https://heroku-cocomo-frontend-dev.herokuapp.com/app/events/");
+    cy.visit("/app/events");
     cy.contains("Continue").click();
     cy.origin("https://black-pine-3629.eu.auth0.com", () => {
       cy.get("#username").type("systemtests@amotek.be");
