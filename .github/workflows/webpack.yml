@@ -1,48 +1,25 @@
 name: Cypress Test
 
-on: [push]
-  
+on:
+  push:
+    branches:
+      - main
 
-      jobs:
-        cypress-run :
-        runs-on : ubuntu-latest
-        steps:
-          - name : Checkout
-            uses : actions/checkout@v2
+jobs:
+  test:
+    runs-on: ubuntu-latest
 
-             - name: Install dependencies
-               run: npm install
+    steps:
+    - uses: actions/checkout@v2
 
-             - name : Cypress run
-               uses : cypress-io/github-action@v2
+    - name: Install dependencies
+      run: npm install
 
-               with : 
-                 build : npm run build
-                 start : npm start
-                 record : true
-
-                env : 
-                  CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY}}
-                  GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN }}
-
-                 
-
-
-# jobs:
-#   test:
-#     runs-on: ubuntu-latest
-
-#     steps:
-#     - uses: actions/checkout@v2
-
-#     - name: Install dependencies
-#       run: npm install
-
-#     - name: Run Cypress tests
-#       run: npm run cypress:run
-#       record : true
-#       env:
-#       CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY}}
-#       GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN }}
+    - name: Run Cypress tests
+      run: npm run cypress:run
+    #  record : true
+      env:
+      CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY}}
+      GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN }}
 
    
