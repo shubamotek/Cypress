@@ -15,8 +15,13 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Run Cypress tests
-      run: npm run cypress:run
+      with :
+      build : npm run build
+      start : npm start
+      record : true
+
+  #  - name: Run Cypress tests
+   #   run: npm run cypress:run
     #  record : true
       env:
       CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY}}
