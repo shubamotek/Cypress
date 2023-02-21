@@ -21,9 +21,7 @@ describe("test", () => {
   cy.get('input[placeholder=\"1 (702) 123-4567\"]').type('8984787555')
   cy.xpath('//*[@id="root"]/section/section/main/div/div[2]/form/div/div[4]/div[2]/button').click()
   cy.xpath('//*[@id="root"]/section/section/main/div/div[2]/form/div/div[4]/div[2]/div/div/div/ul/li[2]/span').click()
-  // //*[@id="root"]/section/section/main/div/div[2]/form/div/div[4]/div[2]/button/svg
-  //*[@id="root"]/section/section/main/div/div[2]/form/div/div[4]/div[2]/button
-  //*[@id="root"]/section/section/main/div/div[2]/form/div/div[4]/div[2]/button
+ 
   
 
   cy.contains('Next').click()
@@ -48,11 +46,68 @@ describe("test", () => {
   cy.get('input[placeholder=\"1 (702) 123-4567\"]').type('32489087777')
   cy.get("#SupplierCategory").clear()
   cy.get("#SupplierCategory").type('D')
- // cy.xpath('/html/body/div[2]/div/div[3]/div/div/div[2]/form/div[5]/div[3]/div/button').click()
+  cy.contains('Save').click()
+
+  // New activity toevoegen
+
+  cy.contains('New Activity').click()
+  cy.get('#activityTitle').type("Meeting")
+  cy.get('#minAttendants').type(50)
+  cy.get('#maxAttendants').type(100)
+  cy.get('#price').type(15)
+  cy.get('#category').type('B')
+  cy.get('#location').type('Kip dorp 49')
+  cy.get('#activityDescription').type('Het is een test')
+  cy.get('#activityDuration').click()
+  cy.get('a.ant-picker-now-btn').click();
+  cy.get('span.ant-upload-picture-card-wrapper').attachFile('image/Picture1.png')
+  cy.contains('Submit Activity').click()
+
+  // Editen van de activity
+
+  cy.xpath('//*[@id="root"]/section/section/main/div/div[2]/div[2]/div/div/div/div/div/div/table/tbody/tr[1]/td[5]/div/div[1]/img').click()
+  cy.get('#activityTitle').clear()
+  cy.get('#activityTitle').type("Test")
+  cy.get('#activityDescription').clear()
+  cy.get('#activityDescription').type('Het is een grote test')
+  cy.get('#activityDuration').click()
+  cy.get('#activityDuration').clear()
+  cy.get('#activityDuration').type('07:30')
+  cy.get('#category').clear()
+  cy.get('#category').type('W')
+  cy.get('#price').clear()
+  cy.get('#price').type(25)
+  cy.get('#minAttendants').clear()
+  cy.get('#minAttendants').type(75)
+  cy.get('#maxAttendants').clear()
+  cy.get('#maxAttendants').type(175)
+  cy.get('#location').clear()
+  cy.get('#location').type('Kontich')
+  cy.contains('Save').click()
+  cy.xpath('//*[@id="root"]/section/section/main/div/div[2]/div[2]/div/div/div/div/div/div/table/tbody/tr[1]/td[5]/div/div[2]').click()
+  // Optioneel ofwel is het delete of wel cancel
+  cy.contains('Delete').click()
+//  cy.contains('Cancel').click()
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  
+
+ 
   
   
   
- // cy.xpath('/html/body/div[2]/div/div[3]/div/div/div[2]/form/div[5]/div[3]/div/div/div/div/ul/li[1]/span').click()
+ 
 
   
 
