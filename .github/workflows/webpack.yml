@@ -30,7 +30,7 @@ on : [push]
 
 
 jobs : 
- cypress-run:
+ tests:
   runs-on : ubuntu-latest
   steps : 
      uses : actions/checkout@v2
