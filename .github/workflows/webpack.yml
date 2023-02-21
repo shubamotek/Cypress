@@ -8,11 +8,25 @@ jobs:
         uses: actions/checkout@v3
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
+
+      - name: Install SendGrid
+        run: npm install @sendgrid/mail
+
       - name: Cypress run
         uses: cypress-io/github-action@v5
       
-       # env:
-       # CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY}}
-       # GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN }}
-
+    - name: Send email notification
+      if: failure() || success()
+        env:
+          AMOTEK_KEY: ${{ secrets.AMOTEK_KEY }}
+     run: |
+    const sgMail = require('@sendgrid/mail');
+    sgMail.setApiKey(process.env.AMOTEK_KEY);
+    const message = {
+      to: 'shubprasain@hotmail.com',
+      from: 'shub.prasain@amotek.be',
+      subject: `Cypress test ${ job.status }`,
+      text: `Your Cypress test has ${ job.status }`
+    };
+    sgMail.send(message);
 
