@@ -15,18 +15,21 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v5
       
-    - name: Send email notification
-      if: failure() || success()
-        env:
-          AMOTEK_KEY: ${{ secrets.AMOTEK_KEY }}
-     run: |
-    const sgMail = require('@sendgrid/mail');
-    sgMail.setApiKey(process.env.AMOTEK_KEY);
-    const message = {
-      to: 'shubprasain@hotmail.com',
-      from: 'shub.prasain@amotek.be',
-      subject: `Cypress test ${ job.status }`,
-      text: `Your Cypress test has ${ job.status }`
-    };
-    sgMail.send(message);
-
+  - name: Send mail
+  if: always()
+  uses: dawidd6/action-send-mail@v2
+  with:
+    # mail server settings
+    server_address: smtp.gmail.com
+    server_port: 465
+    # user credentials
+    username: ${{ secrets.EMAIL_USERNAME }}
+    password: ${{ secrets.EMAIL_PASSWORD }}
+    # email subject
+    subject: ${{ github.job }} job of ${{ github.repository }} has ${{ job.status }}
+    # email body as text
+    body: ${{ github.job }} job in worflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
+    # comma-separated string, send email to
+    to: shubprasain@hotmail.com
+    # from email name
+    from: shubham
