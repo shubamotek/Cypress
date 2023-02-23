@@ -87,34 +87,7 @@ describe("test", () => {
   cy.xpath('//*[@id="root"]/section/section/main/div/div[2]/div[2]/div/div/div/div/div/div/table/tbody/tr[1]/td[5]/div/div[2]').click()
   // Optioneel ofwel is het delete of wel cancel
   cy.contains('Delete').click()
-//  cy.contains('Cancel').click()
-
-
-
-
-
-
-  
-
-
-
-
-  
-
-  
-
- 
-  
-  
-  
- 
-
-  
-
-  
-
-
-  
+//  cy.contains('Cancel').click(  
   
 
  
@@ -131,3 +104,21 @@ describe("test", () => {
 //   cy.visit("https://heroku-cocomo-frontend-dev.herokuapp.com/app/suppliers/create-new-supplier")
  });
  });
+
+ after(() => {
+  if(this.currentTest.state === "failed") {
+    cy.task('recordFailedVideo');
+  } else {
+    // If the test succeeded, capture a video of the test results
+    cy.task('recordSuccessfulVideo');
+  }
+
+  
+})
+
+afterEach(() => {
+  if (this.currentTest.state === 'failed') {
+    // If the test failed, capture a screenshot of the test results
+    cy.screenshot(`${this.currentTest.fullTitle()}-failed`, {capture: 'viewport'});
+  }
+});
