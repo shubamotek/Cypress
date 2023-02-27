@@ -56,7 +56,8 @@ jobs:
           FROM_EMAIL: shub.prasain@amotek.be
           TO_EMAIL: shubprasain@aol.com
         run: |
-          const mailgun = require('mailgun-js')({ apiKey: process.env.MAILGUN_API_KEY, domain: process.env.MAILGUN_DOMAIN });
+          const mailgun = require('mailgun-js')({ apiKey: 7294df019f7dde6c672a6bd4c98e2087-15b35dee-996cde8e
+, domain: sandboxb722719f9048484caf21b7386d808f56.mailgun.org });
 
           const data = {
             from: process.env.FROM_EMAIL,
