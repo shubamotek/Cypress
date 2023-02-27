@@ -21,7 +21,10 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v5
 
-         - name: Send email on success
+        - name: Run Cypress tests
+        run: npm run cy:run
+
+      - name: Send email on success
         if: success()
         env:
           MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
