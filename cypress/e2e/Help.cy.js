@@ -19,7 +19,7 @@ describe("test", () => {
   cy.xpath('//*[@id="Widget77187006"]').type('Dit is een test *IGNORE*')
   cy.xpath('//*[@id="Display1067499710"]/a').click()
   cy.contains('Add file').click()
-  cy.get('')
+ // cy.get('')
 
 
 
