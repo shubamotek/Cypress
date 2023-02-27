@@ -11,6 +11,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
+      - name : install cypress
+        run :  npm install cypress --save-dev
+
+
       - name : install i
         run : npm i
         
