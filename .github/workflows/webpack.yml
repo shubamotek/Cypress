@@ -24,9 +24,6 @@ jobs:
 
       - name: Run Cypress tests
         run: npm run cy:run
-        
-       - name : install mailgun
-         run  : npm i mailgun.js
 
       - name: Send email on success
         if: success()
@@ -67,5 +64,5 @@ jobs:
           };
 
           mailgun.messages().send(data, (error, body) => {
-            console.log(body);
+            console.log(body)
           })
