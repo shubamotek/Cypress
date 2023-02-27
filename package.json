@@ -10,7 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "cypress-file-upload": "^5.0.8",
-    "cypress-xpath": "^2.0.1"
+    "cypress-xpath": "^2.0.1",
+    "mailgun-js": "^0.22.0"
   },
   "devDependencies": {
     "cypress-email-results": "^1.8.0"
