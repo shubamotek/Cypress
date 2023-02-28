@@ -33,7 +33,8 @@ jobs:
           FROM_EMAIL: Shub.prasain@amotek.be
           TO_EMAIL: shubprasain@aol.com
         run: |
-          const mailgun = require('mailgun-js')({ apiKey: process.env.MAILGUN_API_KEY, domain: process.env.MAILGUN_DOMAIN });
+          node send-mail.js
+          ({ apiKey: process.env.MAILGUN_API_KEY, domain: process.env.MAILGUN_DOMAIN });
 
 
           const data = {
