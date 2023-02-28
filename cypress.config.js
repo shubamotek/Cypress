@@ -2,7 +2,7 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   videoCompression : 15,
-  projectId : "uy4c54",
+  projectId : "suqo8p",
   e2e: {
     baseUrl : "https://heroku-cocomo-frontend-dev.herokuapp.com/",
     setupNodeEvents(on, config) {
