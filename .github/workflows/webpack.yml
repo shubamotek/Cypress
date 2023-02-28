@@ -25,20 +25,4 @@ jobs:
         run: npm run cy:run
 
          - uses: actions/checkout@v3  
-         - name: Send email on failure or success
-      if: ${{ failure() || success() }}
-      uses: dawidd6/action-send-mail@v3
-      with:
-        server_address: smtp.gmail.com
-        server_port: 587
-        username: shub.prasain@amotek.be
-        password: 1967Rabbit....
-        subject: 'GitHub Action ${{ job.status }}: ${{ github.repository }}'
-        body: |
-          The ${{ job.status }} job for ${{ github.repository }} has completed.
-          Conclusion: ${{ job.conclusion }}.
-          Commit message: ${{ github.event.head_commit.message }}.
-          Commit URL: ${{ github.event.head_commit.url }}.
-        to: shubprasain@hotmail.com
-
       
