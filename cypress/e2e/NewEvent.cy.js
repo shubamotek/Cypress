@@ -76,11 +76,11 @@ describe("test", () => {
       cy.xpath('//*[@id="eventLogoImage"]').attachFile('image/Picture1.png')
 
        cy.get('button.ant-btn.ant-btn-text.ant-btn-sm.ant-btn-icon-only.ant-upload-list-item-card-actions-btn[title="Remove file"]').eq(1).click()
-   //  cy.xpath('//*[@id="eventBackgroundImage"]').attachFile('image/Picture1.png')
+     cy.xpath('//*[@id="eventBackgroundImage"]').attachFile('image/Picture1.png')
 
-      cy.get('#websiteBackgroundImage').attachFile('image/Picture1.png')
+   //  cy.get('#websiteBackgroundImage').attachFile('image/Picture1.png')
 
-      cy.get('#websiteLogoImage').attachFile('image/Picture1.png')
+  //    cy.get('#websiteLogoImage').attachFile('image/Picture1.png')
 
       cy.contains('Save').click()
    //   cy.xpath('/html/body/div[2]/div/div[3]/div/div/div[1]/div/button').click()
@@ -176,7 +176,7 @@ describe("test", () => {
     cy.contains('Search').click({force:true})
    cy.xpath('//*[@id="root"]/section/section/main/div/div[2]/div/div/div/div/div/div/table/tbody/tr[1]/td[6]/div/div[2]').click()
 
-     cy.xpath('/html/body/div[6]/div/div/div/div[2]/div/div[2]/button[2]').click()
+  //   cy.xpath('/html/body/div[6]/div/div/div/div[2]/div/div[2]/button[2]').click()
      cy.contains('Delete').click()
 
     // Logout
