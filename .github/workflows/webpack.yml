@@ -25,7 +25,7 @@ jobs:
       - name: Run Cypress tests
         run: npm run cy:run
 
-          - name: Send email on success
+     - name: Send email on success
         if: success()
         env:
           MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
