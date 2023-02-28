@@ -40,7 +40,7 @@ describe("test", () => {
      cy.get('input.ant-input').eq(1)
      .type('Meeting.amotek.be');
      cy.contains('Search').click({force:true})
-    cy.xpath('//*[@id="root"]/section/section/main/div/div[2]/div/div/div/div/div/div/table/tbody/tr/td[6]/div/div[1]').eq(0).click()
+   // cy.xpath('//*[@id="root"]/section/section/main/div/div[2]/div/div/div/div/div/div/table/tbody/tr/td[6]/div/div[1]').eq(0).click()
 
 
      cy.contains('Manage Event').click({force:true})
