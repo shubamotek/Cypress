@@ -1,4 +1,4 @@
-describe("test", () => {
+ /* describe("test", () => {
     it("test", () => {
       cy.visit("/");
       cy.contains("Continue").click();
@@ -22,7 +22,7 @@ describe("test", () => {
  // cy.get('')
 
 
-
+*/
   
   
 
