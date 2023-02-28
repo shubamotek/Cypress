@@ -181,7 +181,7 @@ describe("test", () => {
 
     // Logout
 
- //   cy.contains('Logout').click()
+    cy.contains('Logout').click()
     
 
 
