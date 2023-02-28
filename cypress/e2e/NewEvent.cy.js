@@ -13,7 +13,7 @@ describe("test", () => {
     });
 
      cy.contains('New event').click()
-      cy.get('#title').type('Meeting.amotek.be')
+      cy.get('#title').type('Testingggg')
        cy.get('#startDate').click()
       cy.get('a.ant-picker-today-btn').eq(0).click()
      cy.get('#startTime').click()
@@ -38,9 +38,9 @@ describe("test", () => {
      cy.contains('Events').click()
      cy.get('.ant-dropdown-trigger.ant-table-filter-trigger').eq(0).click();
      cy.get('input.ant-input').eq(1)
-     .type('Meeting.amotek.be');
+     .type('Testingggg');
      cy.contains('Search').click({force:true})
-   // cy.xpath('//*[@id="root"]/section/section/main/div/div[2]/div/div/div/div/div/div/table/tbody/tr/td[6]/div/div[1]').eq(0).click()
+    cy.xpath('//*[@id="root"]/section/section/main/div/div[2]/div/div/div/div/div/div/table/tbody/tr/td[6]/div/div[1]').eq(0).click()
 
 
      cy.contains('Manage Event').click({force:true})
@@ -172,12 +172,12 @@ describe("test", () => {
     cy.contains('Events').click()
     cy.get('.ant-dropdown-trigger.ant-table-filter-trigger').eq(0).click();
     cy.get('input.ant-input').eq(1)
-    .type('Meeting');
+    .type('Testingggg');
     cy.contains('Search').click({force:true})
     cy.xpath('//*[@id="root"]/section/section/main/div/div[2]/div/div/div/div/div/div/table/tbody/tr[1]/td[6]/div/div[2]').click()
 
-   //  cy.xpath('/html/body/div[6]/div/div/div/div[2]/div/div[2]/button[2]').click()
-   //   cy.contains('Delete').click()
+     cy.xpath('/html/body/div[6]/div/div/div/div[2]/div/div[2]/button[2]').click()
+     cy.contains('Delete').click()
 
     // Logout
 
