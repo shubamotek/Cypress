@@ -24,21 +24,21 @@ jobs:
 
       - name: Run Cypress tests
         run: npm run cy:run
-      - name: Send mail
-  if: always()
-     uses: dawidd6/action-send-mail@v3
-     with:
-    # mail server settings
-    server_address: smtp.gmail.com
-    server_port: 465
-    # user credentials
-    username: shub.prasain@amotek.be
-    password: 1967Rabbit....
-    # email subject
-    subject: ${{ github.job }} job of ${{ github.repository }} has ${{ job.status }}
-    # email body as text
-    body: ${{ github.job }} job in worflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
-    # comma-separated string, send email to
-    to: shubprasain@hotmail.com
-    # from email name
-    from: Shubham Prasain
+      
+       - name: Send email on failure
+        if: succes()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: shub.prasain@amotek.be
+          password: 1967Rabbit....
+          subject: 'Tests failed on GitHub Actions'
+          body: |
+            The tests failed on the following commit:
+            
+            Commit: ${{ github.sha }}
+            Repository: ${{ github.repository }}
+            
+          to: shubprasain@hotmail.com
+    
