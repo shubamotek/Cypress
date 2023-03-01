@@ -26,7 +26,7 @@ jobs:
         run: npm run cy:run
       - name: Send email on success
         
-        run : npm i mailgun.js
+
         if: success()
         env:
           MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
@@ -34,7 +34,7 @@ jobs:
           FROM_EMAIL: Shub.prasain@amotek.be
           TO_EMAIL: shubprasain@aol.com
         run: |
-          node send-mail.js
+          npm i mailgun.js
           ({ apiKey: process.env.MAILGUN_API_KEY, domain: process.env.MAILGUN_DOMAIN });
 
 
