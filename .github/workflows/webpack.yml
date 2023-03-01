@@ -1,22 +1,72 @@
-name: Issue Activity
+name: Cypress Tests
 
 on:
-  issue_comment:
-    types: [created, edited, deleted]
-    
+  push:
+    branches:
+      - main
+
 jobs:
-  send-mail:
+  cypress:
     runs-on: ubuntu-latest
-    name: Send email when issue created/edited/deleted
+
     steps:
-      - name: Send Mail Action
-        id: sendmail
-        uses: vineetchoudhary/mailgun-action@master
-        with:
+      - uses: actions/checkout@v3
+
+      - name : install cypress
+        run :  npm install cypress --save-dev
+
+
+      - name : install i
+        run : npm i
+        
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Cypress tests
+        run: npm run cy:run
+         - name: Send email on success
+        if: success()
+        env:
           MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
-          MAILGUN_DOMAIN: sandboxb722719f9048484caf21b7386d808f56.mailgun.org    
-          to: shubprasain@hotmail.com
-          subject: 'Issue Activity'
-          body: '<p><b>Body</b> - {{  }} <br /><br /><b>Issue Activity</b> - {{  }}.  <br /><br /><b>URL</b> - {{  }}  <br /><br /><b>By</b> - {{ }}</p>' 
-      - name: Send Mail Action Response
-        run: echo "${{ }}" 
+          MAILGUN_DOMAIN: sandboxb722719f9048484caf21b7386d808f56.mailgun.org
+          FROM_EMAIL: Shub.prasain@amotek.be
+          TO_EMAIL: shubprasain@aol.com
+        run: |
+          node send-mail.js
+          ({ apiKey: process.env.MAILGUN_API_KEY, domain: process.env.MAILGUN_DOMAIN });
+
+
+          const data = {
+            from: process.env.FROM_EMAIL,
+            to: process.env.TO_EMAIL,
+            subject: 'Cypress tests passed',
+            text: 'All Cypress tests passed.'
+          };
+
+          mailgun.messages().send(data, (error, body) => {
+            console.log(body);
+          })
+
+      - name: Send email on failure
+        if: failure()
+        env:
+          MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
+          MAILGUN_DOMAIN: sandboxb722719f9048484caf21b7386d808f56.mailgun.org
+          FROM_EMAIL: shub.prasain@amotek.be
+          TO_EMAIL: shubprasain@aol.com
+        run: |
+          const mailgun = require('mailgun-js')({ apiKey: process.env.MAILGUN_API_KEY, domain: process.env.MAILGUN_DOMAIN });
+
+
+          const data = {
+            from: process.env.FROM_EMAIL,
+            to: process.env.TO_EMAIL,
+            subject: 'Cypress tests failed',
+            text: 'One or more Cypress tests failed.'
+          };
+
+          mailgun.messages().send(data, (error, body) => {
+            console.log(body)
+          }) 
+
+    
