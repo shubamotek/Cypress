@@ -24,6 +24,15 @@ jobs:
 
       - name: Run Cypress tests
         run: npm run cy:run
-     
+      - name: Send Mail Action
+        id: sendmail
+        uses: vineetchoudhary/mailgun-action@master
+         with:
+        MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
+        MAILGUN_DOMAIN: sandboxb722719f9048484caf21b7386d808f56.mailgun.org
+        to: shubprasain@hotmail.com
+        - name: Send Mail Action Response
+          run: echo "${{ steps.sendmail.outputs.response }}"   
+          
 
     
