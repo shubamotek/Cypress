@@ -1,38 +1,22 @@
-name: Cypress Tests
+name: Issue Activity
 
 on:
-  push:
-    branches:
-      - main
-
+  issue_comment:
+    types: [created, edited, deleted]
+    
 jobs:
-  cypress:
+  send-mail:
     runs-on: ubuntu-latest
-
+    name: Send email when issue created/edited/deleted
     steps:
-      - uses: actions/checkout@v3
-
-      - name : install cypress
-        run :  npm install cypress --save-dev
-
-
-      - name : install i
-        run : npm i
-        
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run Cypress tests
-        run: npm run cy:run
       - name: Send Mail Action
         id: sendmail
         uses: vineetchoudhary/mailgun-action@master
-         with:
-        MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
-        MAILGUN_DOMAIN: sandboxb722719f9048484caf21b7386d808f56.mailgun.org
-        to: shubprasain@hotmail.com
-        - name: Send Mail Action Response
-          run: echo "${{ steps.sendmail.outputs.response }}"   
-          
-
-    
+        with:
+          MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
+          MAILGUN_DOMAIN: sandboxb722719f9048484caf21b7386d808f56.mailgun.org    
+          to: shubprasain@hotmail.com
+          subject: 'Issue Activity'
+          body: '<p><b>Body</b> - {{  }} <br /><br /><b>Issue Activity</b> - {{  }}.  <br /><br /><b>URL</b> - {{  }}  <br /><br /><b>By</b> - {{ }}</p>' 
+      - name: Send Mail Action Response
+        run: echo "${{ }}" 
