@@ -1,4 +1,4 @@
-name: Cypress Tests
+name: CI
 
 on:
   push:
@@ -6,43 +6,34 @@ on:
       - main
 
 jobs:
-  cypress:
+  test:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - name : install cypress
-        run :  npm install cypress --save-dev
-
-
-      - name : install i
-        run : npm i
-        
       - name: Install dependencies
         run: npm ci
 
-      - name: Run Cypress tests
-        run: npm run cy:run
-      - name: Send email on success
-        
+      - name: Run tests
+        run: npm test
 
-        if: success()
+      - name: Send email on completion
+        if: always()
         env:
           MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
           MAILGUN_DOMAIN: sandboxb722719f9048484caf21b7386d808f56.mailgun.org
           FROM_EMAIL: Shub.prasain@amotek.be
           TO_EMAIL: shubprasain@aol.com
         run: |
-          npm i mailgun.js
-          ({ apiKey: process.env.MAILGUN_API_KEY, domain: process.env.MAILGUN_DOMAIN });
-
+          const mailgun = require('mailgun-js')({ apiKey: process.env.MAILGUN_API_KEY, domain: process.env.MAILGUN_DOMAIN });
 
           const data = {
             from: process.env.FROM_EMAIL,
             to: process.env.TO_EMAIL,
-            subject: 'Cypress tests passed',
-            text: 'All Cypress tests passed.'
+            subject: 'Cypress tests completed',
+            text: 'Cypress tests completed.'
           };
 
           mailgun.messages().send(data, (error, body) => {
@@ -59,7 +50,6 @@ jobs:
         run: |
           const mailgun = require('mailgun-js')({ apiKey: process.env.MAILGUN_API_KEY, domain: process.env.MAILGUN_DOMAIN });
 
-
           const data = {
             from: process.env.FROM_EMAIL,
             to: process.env.TO_EMAIL,
@@ -70,5 +60,3 @@ jobs:
           mailgun.messages().send(data, (error, body) => {
             console.log(body)
           }) 
-
-    
