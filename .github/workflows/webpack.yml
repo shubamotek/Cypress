@@ -15,9 +15,12 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+      - name : install i
+        run :  npm i
 
-      - name: Run tests
-        run: npm test
+      - name: Run Cypress tests
+        run: npm run cy:run
+    
 
       - name: Send email on completion
         if: always()
