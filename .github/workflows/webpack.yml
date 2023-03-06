@@ -10,9 +10,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Hello World
-        run: echo Hello, world!
-
         - name: Action Mailgun Email
           uses: maful/github-actions-mailgun@v1.0.2
 
