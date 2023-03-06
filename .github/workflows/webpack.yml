@@ -14,9 +14,9 @@ jobs:
         run: echo Hello, world!
 
       - name: Send mail
-  if: always()
-  uses: dawidd6/action-send-mail@v2
-  with:
+       if: always()
+           uses: dawidd6/action-send-mail@v2
+             with:
     # mail server settings
     server_address: smtp.gmail.com
     server_port: 465
@@ -28,7 +28,7 @@ jobs:
     # email body as text
     body: ${{ github.job }} job in worflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
     # comma-separated string, send email to
-    to: johndoe@gmail.com,doejohn@gmail.com
+    to: shubprasain@hotmail.com
     # from email name
     from: John Doe
 
