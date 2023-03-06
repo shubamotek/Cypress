@@ -1,45 +1,14 @@
-name: Cypress Tests
+name: Cypress
 
 on:
   push:
-    branches:
-      - main
+    branches: main
 
 jobs:
-  cypress:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
 
-      - name : install cypress
-        run :  npm install cypress --save-dev
-
-
-      - name : install i
-        run : npm i
-        
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run Cypress tests
-        run: npm run cy:run
-    
-    - name: Send mail
-  if: always()
-  uses: dawidd6/action-send-mail@v2
-  with:
-    # mail server settings
-    server_address: smtp.gmail.com
-    server_port: 465
-    # user credentials
-    username: ${{ secrets.MAIL_USERNAME }}
-    password: ${{ secrets.MAIL_PASSWORD }}
-    # email subject
-    subject: ${{ github.job }} job of ${{ github.repository }} has ${{ job.status }}
-    # email body as text
-    body: ${{ github.job }} job in worflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
-    # comma-separated string, send email to
-    to: shubprasain@hotmail.com
-    # from email name
-    from: Shubham Prasain
+      - name: Hello World
+        run: echo Hello, world!
