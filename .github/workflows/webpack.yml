@@ -25,9 +25,7 @@ jobs:
       - name: Run Cypress tests
         run: npm run cy:run
       - name: Send email on success
-      
-        
-
+  
         if: success()
         env:
           MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
@@ -35,7 +33,7 @@ jobs:
           FROM_EMAIL: Shub.prasain@amotek.be
           TO_EMAIL: shubprasain@aol.com
         run: |
-          npm i emailjs
+          const mailgun = require('mailgun-js')
           ({ apiKey: process.env.MAILGUN_API_KEY, domain: process.env.MAILGUN_DOMAIN });
 
 
