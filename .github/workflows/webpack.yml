@@ -13,4 +13,17 @@ jobs:
       - name: Hello World
         run: echo Hello, world!
 
+        - name: Action Mailgun Email
+          uses: maful/github-actions-mailgun@v1.0.2
+
+           with:
+    api_key: ${{ secrets.API_KEY }}
+    domain: ${{ secrets.DOMAIN }}
+    from: ${{ secrets.FROM_EMAIL }}
+    to: ${{ secrets.TO_EMAIL }}
+    subject: 'Action subject'
+    body: 'Action body'
+    attachment: ${{ github.workspace }}/github.png
+
+
    
