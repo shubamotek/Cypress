@@ -146,7 +146,7 @@ describe("test", () => {
        cy.contains('Submit').click( {force:true})
   //    cy.xpath('/html/body/div[2]/div/div[3]/div/div/div[1]/div/button').click()
 
-  //FDgdfgd
+  //FDgdfg
 
  
        cy.xpath('//*[@id="root"]/section/section/main/div/div[2]/div/div[1]/div[7]/a').click({force:true})
