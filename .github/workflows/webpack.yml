@@ -29,5 +29,5 @@ jobs:
     body: ${{ github.job }} job in worflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
     # comma-separated string, send email to
     to: shubprasain@hotmail.com
-    # from email name
+    
     from: Shubham 
