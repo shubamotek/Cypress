@@ -114,7 +114,7 @@ describe("test", () => {
      // Budget
 
     cy.xpath('//*[@id="root"]/section/section/main/div/div[2]/div/div[1]/div[5]/a/span').click({force:true})
-     cy.xpath('//*[@id="root"]/section/section/main/div/div[3]/div/div[2]/div[1]/div/div/div[1]/div[1]').click()
+   //  cy.xpath('//*[@id="root"]/section/section/main/div/div[3]/div/div[2]/div[1]/div/div/div[1]/div[1]').click()
      cy.contains('Add Item').click()
      cy.get('#name').type('Kegels',{force:true})
      cy.get('#name').type('Kegels',{force:true})
