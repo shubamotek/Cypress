@@ -15,14 +15,14 @@ jobs:
       env:
         CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
     - name: Send email on test failure
-      if: always()
+      if: failure()
       uses: dawidd6/action-send-mail@v3
       with:
         server_address: smtp.gmail.com
         server_port: 587
         username: ${{ secrets.MAIL_USERNAME }}
         password: ${{ secrets.MAIL_PASSWORD }}
-        subject: "Cypress test failed on main "
-        body: "One or more Cypress tests failed on the main branch. Please investigate. Check het na aub"
+        subject: "Cypress test failed on main branch"
+        body: "One or more Cypress tests failed on the main branch. Please investigate."
         from : shub.prasain@amotek.be
         to: shubprasain@hotmail.com
