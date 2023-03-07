@@ -27,7 +27,7 @@ jobs:
         from : shub.prasain@amotek.be
         to: shubprasain@hotmail.com
 
-     CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+   
     - name: Send email on test failure
       if: success()
       uses: dawidd6/action-send-mail@v3
