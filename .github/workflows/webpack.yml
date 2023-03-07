@@ -23,7 +23,7 @@ jobs:
         username: ${{ secrets.MAIL_USERNAME }}
         password: ${{ secrets.MAIL_PASSWORD }}
         subject: "Build failed on ${{ github.repository }}"
-        body: "The build failed on ${{ github.repository }}. See error message below:\n\n${{ job.status }}\n\n${{ job.logs }}"
+        body: "The build failed on ${{ github.repository }}. "
         from : shub.prasain@amotek.be
         to: shubprasain@hotmail.com
 
