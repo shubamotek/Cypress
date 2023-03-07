@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v2
     - name: Install dependencies
       run: npm install
     - name: Run Cypress tests
@@ -23,12 +23,12 @@ jobs:
         username: ${{ secrets.MAIL_USERNAME }}
         password: ${{ secrets.MAIL_PASSWORD }}
         subject: "Build failed on ${{ github.repository }}"
-        body: "The build failed on ${{ github.repository }} Error message: ${{ job.status }}". "
+        body: "The build failed on ${{ github.repository }}. See error message below:\n\n${{ job.status }}\n\n${{ job.logs }}"
         from : shub.prasain@amotek.be
         to: shubprasain@hotmail.com
 
    
-    - name: Send email on test Success
+    - name: Send email on test 
       if: success()
       uses: dawidd6/action-send-mail@v3
       with:
