@@ -28,7 +28,7 @@ jobs:
         to: shubprasain@hotmail.com
 
    
-    - name: Send email on test 
+    - name: Send email on test Success
       if: success()
       uses: dawidd6/action-send-mail@v3
       with:
