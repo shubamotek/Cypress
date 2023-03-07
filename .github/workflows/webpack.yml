@@ -7,7 +7,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-   
+   steps:
       - uses: actions/checkout@v2
 
        - name : install cypress
@@ -23,16 +23,4 @@ jobs:
       - name: Run Cypress tests
         run: npm run cy:run
 
-      - name: ✨ Send email, error or succes
-        if  : always()
-        uses: dawidd6/action-send-mail@v1.3.0
-        with:
-          server_address: smtp.gmail.com
-          server_port: 465
-          username: shub.prasain@amotek.be
-          password: ${{ secrets.MAIL_PASSWORD }}
-          subject: hello
-          body: ${{ github.job }} job in worflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
-          to: shubprasain@hotmail.com,shubprasain@aol.com
-          from: Shubham Prasain
-          ##gdfgdf
+    
