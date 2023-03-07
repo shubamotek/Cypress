@@ -3,22 +3,21 @@ name: Cypress
 on: [push]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-   steps:
-      - uses: actions/checkout@v2
+ cypress-run :
+      runs-on : ubuntu-latest
 
-       - name : install cypress
-        run :  npm install cypress --save-dev
+        steps: 
+        - name : Checkout
+          uses: actions/checkout@v2
 
+        - name : Cypress run 
+          uses : cypress-io/github-action@v2
 
-      - name : install i
-        run : npm i
-        
-      - name: Install dependencies
-        run: npm ci
+           - name : install cypress
+             run :  npm install cypress --save-dev
 
-      - name: Run Cypress tests
-        run: npm run cy:run
+          with:
+          build : npm run build
+          start : npm start
 
     
