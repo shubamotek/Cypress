@@ -22,7 +22,7 @@ jobs:
         server_port: 587
         username: ${{ secrets.MAIL_USERNAME }}
         password: ${{ secrets.MAIL_PASSWORD }}
-        subject: "Cypress test failed on main branch"
-        body: "One or more Cypress tests failed on the main branch. Please investigate."
+        subject: "Cypress test failed on main "
+        body: "One or more Cypress tests failed on the main branch. Please investigate. Check het na aub"
         from : shub.prasain@amotek.be
         to: shubprasain@hotmail.com
