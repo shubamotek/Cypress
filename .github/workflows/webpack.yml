@@ -16,6 +16,8 @@ jobs:
         CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
     - name: Send email on test failure
       if: failure()
+      run: echo "::set-output name=error_message::$(tail -n 1 /path/to/error.log)"
+      - name: Email notification on failure
       uses: dawidd6/action-send-mail@v3
       with:
         server_address: smtp.gmail.com
@@ -23,12 +25,12 @@ jobs:
         username: ${{ secrets.MAIL_USERNAME }}
         password: ${{ secrets.MAIL_PASSWORD }}
         subject: "Build failed on ${{ github.repository }}"
-        body: "The build failed on ${{ github.repository }}. See error message below:\n\n${{ job.status }}\n\n${{ job.logs }}"
+        body: 'The build failed on ${{ github.repository }}. See error message below:\n\n${{ steps.get_error_message.outputs.error_message }}'
         from : shub.prasain@amotek.be
         to: shubprasain@hotmail.com
 
    
-    - name: Send email on test failure
+    - name: Send email on test success
       if: success()
       uses: dawidd6/action-send-mail@v3
       with:
