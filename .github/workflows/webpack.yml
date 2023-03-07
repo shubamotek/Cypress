@@ -11,7 +11,7 @@ jobs:
     - name: Install dependencies
       run: npm install
     - name: Run Cypress tests
-      run: npm run cy:  run --record
+      run: npm run cy: run --record
       env:
         CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
     - name: Send email on test succes
