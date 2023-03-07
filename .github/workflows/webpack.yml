@@ -9,8 +9,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      
+       - name : install cypress
+        run :  npm install cypress --save-dev
 
-      - name: ✨ Send email, you star
+
+      - name : install i
+        run : npm i
+        
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Cypress tests
+        run: npm run cy:run
+
+      - name: ✨ Send email, error or succes
+        if  : always()
         uses: dawidd6/action-send-mail@v1.3.0
         with:
           server_address: smtp.gmail.com
@@ -18,7 +32,7 @@ jobs:
           username: shub.prasain@amotek.be
           password: ${{ secrets.MAIL_PASSWORD }}
           subject: hello
-          body: ${{ github.actor }} just starred your mail-on-star repo!!! ${{ github.repository }}
-          to: shubprasain@hotmail.com
-          from: shub.prasain@amotek.be
+          body: ${{ github.job }} job in worflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
+          to: shubprasain@hotmail.com,shubprasain@aol.com
+          from: Shubham Prasain
           ##gdfgdf
