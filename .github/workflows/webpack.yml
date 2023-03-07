@@ -27,15 +27,3 @@ jobs:
         from : shub.prasain@amotek.be
         to: shubprasain@hotmail.com
 
-    - name: Send email on test Succes
-      if: succes()
-      uses: dawidd6/action-send-mail@v3
-      with:
-        server_address: smtp.gmail.com
-        server_port: 587
-        username: ${{ secrets.MAIL_USERNAME }}
-        password: ${{ secrets.MAIL_PASSWORD }}
-        subject: "No failed test"
-        body: "Test is gelukt zonder fouten"
-        from : shub.prasain@amotek.be
-        to: shubprasain@hotmail.com
